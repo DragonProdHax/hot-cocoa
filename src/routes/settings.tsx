@@ -136,7 +136,7 @@ export default function Settings() {
       <div class="box-border flex flex-wrap justify-center gap-6 pt-8">
         <div class="flex group relative w-80 flex-col items-center gap-4 rounded-box bg-base-200 p-4">
           <h1 class="text-2xl font-semibold">Cloaking</h1>
-          <p class="text-xs">Change how Mocha appears in your browser</p>
+          <p class="text-xs">Change how Cocoa appears in your browser</p>
           <input type="text" class="input input-bordered w-full" value={tabName()} onInput={(e) => setTabName(e.target.value)} placeholder="Tab name" />
           <input type="text" class="input input-bordered w-full" value={tabIcon()} onInput={(e) => setTabIcon(e.target.value)} placeholder="Tab icon" />
 

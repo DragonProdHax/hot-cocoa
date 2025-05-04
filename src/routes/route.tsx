@@ -156,18 +156,10 @@ export default function Route() {
           </button>
         </div>
 
-        <input
-          value={url()}
-          type="text"
-          class="input join-item w-96 bg-base-200 focus:outline-none "
-          onKeyDown={(e) => {
-            if (e.key !== 'Enter') return
-            if (!ref || !ref.contentWindow) return
+        <div class="input join-item w-96 bg-base-200 flex items-center px-4">
+          {url()}
+        </div>
 
-            ref.src = `/~/${encodeXor(formatSearch(e.currentTarget.value))}`
-            e.currentTarget.blur()
-          }}
-        />
         <div class="tooltip" data-tip="Return to home screen">
           <A class="btn btn-square join-item bg-base-200" href="/">
             <Home class="h-5 w-5" />
