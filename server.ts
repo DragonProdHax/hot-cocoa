@@ -50,5 +50,6 @@ httpServer.on('listening', () => {
 })
 
 httpServer.listen({
-  port
+  port,
+  host: '0.0.0.0'
 })
