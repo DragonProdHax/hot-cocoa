@@ -10,8 +10,18 @@
     "image": "https://bleedingcool.com/wp-content/uploads/2024/06/CrazyGames-Banner-Logo-1200x900.jpg"
   },
   {
+    "name": "Poki",
+    "url": "https://poki.com/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Poki_logo.svg/2560px-Poki_logo.svg.png"
+  },
+  {
     "name": "Food Stars",
     "url": "https://foodstars.io",
     "image": "https://img.gamepix.com/games/foodstars-io/cover/foodstars-io.png?w=400&ar=16:10"
+  },
+  {
+    "name": "Roblox",
+    "url": "https://mathsspot.com/",
+    "image": "https://i.ytimg.com/vi/n8Hpsy7xOLs/maxresdefault.jpg"
   }
 ]
