@@ -11,7 +11,6 @@ export default function Home() {
   const [currentMessageIndex, setCurrentMessageIndex] = createSignal(0)
   const messages = [
     "Check out Crazygames",
-    "Play Chess Unblocked",
     "Customize in Settings",
     "Play Minecraft Now",
     "Browse Securely",
@@ -60,7 +59,7 @@ export default function Home() {
             </svg>
             <h1 class="text-5xl font-semibold">Hot Chocolate</h1>
           </div>
-          <h2 class="text-2xl mt-4">Proxy Coming Soon.....</h2>
+          <h2 class="text-2xl mt-4">IS YUMMY</h2>
           <div class="flex flex-col items-center gap-2 mt-4 text-lg opacity-70">
             <p>{messages[currentMessageIndex()]}</p>
           </div>

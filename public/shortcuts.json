@@ -2,32 +2,12 @@
   {
     "name": "Mike And Ikes",
     "url": "https://pxi-fusion.com/launch",
-    "image": "/images/mike.png"
-  },
-  {
-    "name": "TikTok",
-    "url": "https://tiktok.com",
-    "image": "https://d12jofbmgge65s.cloudfront.net/wp-content/uploads/2021/12/wp-app-review-cards-05.png"
-  },
-  {
-    "name": "YouTube",
-    "url": "https://youtube.com",
-    "image": "https://cdn.vox-cdn.com/thumbor/SDe7wQcz6Y7SvBoaBsZyfcb5hno=/0x0:2040x1360/1400x1400/filters:focal(1020x680:1021x681)/cdn.vox-cdn.com/uploads/chorus_asset/file/23986638/acastro_STK092_02.jpg"
+    "image": "https://res.cloudinary.com/dkqqcqf6f/image/upload/v1746406082/mike_nurtz6.png"
   },
   {
     "name": "Google",
     "url": "https://google.com",
     "image": "https://play-lh.googleusercontent.com/1-hPxafOxdYpYZEOKzNIkSP43HXCNftVJVttoo4ucl7rsMASXW3Xr6GlXURCubE1tA=w3840-h2160-rw"
-  },
-  {
-    "name": "Twitch",
-    "url": "https://twitch.tv",
-    "image": "https://variety.com/wp-content/uploads/2019/09/twitch_logo.jpg"
-  },
-  {
-    "name": "Cool Math Games",
-    "url": "https://coolmathgames.com",
-    "image": "https://upload.wikimedia.org/wikipedia/en/3/39/Cool_Math_Games_screenshot.png"
   },
   {
     "name": "Chess.com",
@@ -40,18 +20,23 @@
     "image": "https://blogs.nvidia.com/wp-content/uploads/2021/02/GFN.png"
   },
   {
-    "name": "Twitter",
-    "url": "https://twitter.com",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC_wqW8HNICg2nSDYlkb-S010wjZrD9yZLeUzKDBF5Ew&s"
-  },
-  {
     "name": "GitHub",
     "url": "https://github.com",
     "image": "https://github.blog/wp-content/uploads/2023/01/1200x640.png?fit=1200%2C640"
   },
   {
-    "name": "neal.fun",
-    "url": "https://neal.fun",
-    "image": "https://i.ytimg.com/vi/HHeBwZCJqhM/maxresdefault.jpg"
+    "name": "Videolink",
+    "url": "https://video.link",
+    "image": "https://video.link/assets/images/metaimage.png?t=938465982367459873646"
+  },
+  {
+    "name": "DuckDuckGo",
+    "url": "https://duckduckgo.com",
+    "image": "https://upload.wikimedia.org/wikipedia/en/thumb/8/88/DuckDuckGo_logo.svg/1200px-DuckDuckGo_logo.svg.png"
+  },
+  {
+    "name": "NOWGG",
+    "url": "https://now.gg",
+    "image": "https://voix.jp/biz/wp-content/uploads/sites/3/2021/06/nowgg.png"
   }
 ]

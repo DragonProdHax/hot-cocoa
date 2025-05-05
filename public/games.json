@@ -15,6 +15,11 @@
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Poki_logo.svg/2560px-Poki_logo.svg.png"
   },
   {
+    "name": "Cool Math Games",
+    "url": "https://coolmathgames.com",
+    "image": "https://amhsnewspaper.com/wp-content/uploads/2019/10/coolmathgames-900x473.jpg"
+  },
+  {
     "name": "Food Stars",
     "url": "https://foodstars.io",
     "image": "https://img.gamepix.com/games/foodstars-io/cover/foodstars-io.png?w=400&ar=16:10"
@@ -23,5 +28,15 @@
     "name": "Roblox",
     "url": "https://mathsspot.com/",
     "image": "https://i.ytimg.com/vi/n8Hpsy7xOLs/maxresdefault.jpg"
+  },
+  {
+    "name": "Kodub",
+    "url": "https://kodub.com/",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPeaRNCcy9DnNM2wcqlKdORfdp4iTNjFib7g&s"
+  },
+  {
+    "name": "Eaglecraft",
+    "url": "https://eaglercraft.com/",
+    "image": "https://static.planetminecraft.com/files/resource_media/screenshot/1248/minecraft_4289159.jpg"
   }
 ]
