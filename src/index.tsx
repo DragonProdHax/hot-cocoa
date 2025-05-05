@@ -12,6 +12,7 @@ import ProxyViewer from './routes/route'
 import Settings from './routes/settings'
 import Shortcuts from './routes/shortcuts'
 import Bookmarks from './routes/bookmarks'
+import Updates from './routes/updates'
 import './style.css'
 
 analytics.trackPageview()
@@ -95,6 +96,7 @@ render(
       <Route path="/bookmarks" component={Bookmarks} />
       <Route path="/faq" component={FAQ} />
       <Route path="/settings" component={Settings} />
+      <Route path="/updates" component={Updates} />
     </Router>
   ),
   root

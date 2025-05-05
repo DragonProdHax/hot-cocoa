@@ -1,6 +1,7 @@
 import { A, useLocation } from '@solidjs/router'
-import { Joystick, Layers, Settings } from 'lucide-solid'
+import { Joystick, Layers, Settings, Bell } from 'lucide-solid'
 import { Show } from 'solid-js'
+
 export default function Navbar() {
   const location = useLocation()
 
@@ -30,6 +31,11 @@ export default function Navbar() {
           <A href="/shortcuts">
             <button class="btn btn-ghost h-10 min-h-10" type="button">
               <Layers class="h-5 w-5" /> Apps
+            </button>
+          </A>
+          <A href="/updates">
+            <button class="btn btn-ghost h-10 min-h-10" type="button">
+              <Bell class="h-5 w-5" /> Updates
             </button>
           </A>
           <A href="/settings">

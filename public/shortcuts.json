@@ -38,5 +38,10 @@
     "name": "NOWGG",
     "url": "https://now.gg",
     "image": "https://voix.jp/biz/wp-content/uploads/sites/3/2021/06/nowgg.png"
+  },
+  {
+    "name": "DeepAI",
+    "url": "https://deepai.org/chat",
+    "image": "https://s3-eu-west-1.amazonaws.com/tpd/logos/65b62b26768fed948677415e/0x0.png"
   }
 ]
