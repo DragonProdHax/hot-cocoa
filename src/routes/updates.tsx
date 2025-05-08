@@ -4,8 +4,8 @@ export default function Updates() {
   return (
     <div class="flex flex-col items-center gap-8 p-8">
       <div class="flex flex-col items-center gap-4">
-        <h1 class="text-4xl font-bold">Release 1.0</h1>
-        <p class="text-lg opacity-70">Welcome to the first major release of Hot Chocolate!</p>
+        <h1 class="text-4xl font-bold">Release 1.1</h1>
+        <p class="text-lg opacity-70">1.1 Update</p>
       </div>
 
       <div class="flex flex-col items-center gap-4 max-w-2xl">
@@ -16,10 +16,8 @@ export default function Updates() {
             <div class="collapse-title text-xl font-medium">New Features</div>
             <div class="collapse-content">
               <ul class="list-disc list-inside space-y-2">
-                <li>Initial release with core proxy functionality</li>
-                <li>Modern and sleek user interface</li>
-                <li>Ultraviolet Proxy</li>
-                <li>Settings</li>
+                <li>A Proxy</li>
+                <li>User counter</li>
               </ul>
             </div>
           </div>

@@ -2,7 +2,6 @@ import { Route, Router } from '@solidjs/router'
 import { render } from 'solid-js/web'
 import store from 'store2'
 import { handleDebug } from './lib/debug'
-import { analytics } from './lib/analytics'
 
 import Layout from './layout'
 import FAQ from './routes/faq'
@@ -13,9 +12,9 @@ import Settings from './routes/settings'
 import Shortcuts from './routes/shortcuts'
 import Bookmarks from './routes/bookmarks'
 import Updates from './routes/updates'
+import Proxy from './routes/proxy'
+import Stats from './routes/stats'
 import './style.css'
-
-analytics.trackPageview()
 
 store.set(
   'tab',
@@ -97,6 +96,8 @@ render(
       <Route path="/faq" component={FAQ} />
       <Route path="/settings" component={Settings} />
       <Route path="/updates" component={Updates} />
+      <Route path="/proxy" component={Proxy} />
+      <Route path="/stats" component={Stats} />
     </Router>
   ),
   root

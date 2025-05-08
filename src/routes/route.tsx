@@ -14,6 +14,11 @@ import { bookmarks, handleBookmark } from '../lib/bookmarks'
 
 export const [proxyReady, setProxyStatus] = createSignal(false)
 
+interface AutoRunCode {
+  website: string
+  code: string
+}
+
 export default function Route() {
   let ref: HTMLIFrameElement
   const [url, setUrl] = createSignal('')
@@ -26,6 +31,29 @@ export default function Route() {
   onMount(() => {
     if (searchParams.hidecontrolbar === 'true') {
       setShowControls(false)
+    }
+
+    const url = atob(params.route)
+    const autoRunCodes = store.get('autoruncodes') as AutoRunCode[] || []
+    
+    // Find matching auto-run code for this URL
+    const matchingCode = autoRunCodes.find(code => 
+      url.includes(code.website)
+    )
+
+    if (matchingCode) {
+      // Wait for the page to load before running the code
+      setTimeout(() => {
+        try {
+          // Run the custom code in the context of the loaded page
+          const iframe = document.querySelector('iframe')
+          if (iframe?.contentWindow) {
+            iframe.contentWindow.eval(matchingCode.code)
+          }
+        } catch (error) {
+          console.error('Error running auto-run code:', error)
+        }
+      }, 2000) // Wait 2 seconds for the page to load
     }
   })
 

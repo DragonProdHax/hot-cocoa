@@ -38,5 +38,15 @@
     "name": "Eaglecraft",
     "url": "https://eaglercraft.com/",
     "image": "https://static.planetminecraft.com/files/resource_media/screenshot/1248/minecraft_4289159.jpg"
+  },
+  {
+    "name": "Playhop",
+    "url": "https://playhop.com/",
+    "image": "https://res.cloudinary.com/dkqqcqf6f/image/upload/v1746501077/Screenshot_2025-05-05_at_8.10.31_PM_uaniay.png"
+  },
+  {
+    "name": "Easyfun",
+    "url": "https://easyfun.gg/",
+    "image": "https://www.24-7pressrelease.com/attachments/051/press_release_distribution_0513207_207175.jpg"
   }
 ]

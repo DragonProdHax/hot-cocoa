@@ -4,14 +4,20 @@ import store from 'store2'
 import { handleTabCloak } from '../lib/cloak'
 import { handleDebug } from '../lib/debug'
 import { handleTheme, themes } from '../lib/theme'
+import { openAbWindow } from '../lib/aboutblank'
 import type { DebugData, PanicData, TabData, ThemeData, TransportData, AboutBlankData, DevtoolsData } from '../lib/types'
 
-import { CircleCheck, CircleHelp } from 'lucide-solid'
+import { CircleCheck, CircleHelp, Code, Globe } from 'lucide-solid'
 import { exportData, importData, resetData } from '../lib/browsingdata'
 import { handleTransport } from '../lib/transport'
 
 export const [exportSuccessful, setExportStatus] = createSignal(false)
 export const [importSuccessful, setImportStatus] = createSignal(false)
+
+interface AutoRunCode {
+  website: string
+  code: string
+}
 
 export default function Settings() {
   const [tabName, setTabName] = createSignal('')
@@ -21,6 +27,9 @@ export default function Settings() {
   const [panicUrl, setPanicUrl] = createSignal('https://classroom.google.com/h')
 
   const [aboutBlank, setAboutBlank] = createSignal('disabled')
+  const [autoRunCodes, setAutoRunCodes] = createSignal<AutoRunCode[]>(store.get('autoruncodes') || [])
+  const [newWebsite, setNewWebsite] = createSignal('')
+  const [newCode, setNewCode] = createSignal('')
 
   const [theme, setTheme] = createSignal('forest')
 
@@ -131,6 +140,22 @@ export default function Settings() {
     if (moreInfoVisibility()) moreInfo.showModal()
   })
 
+  function addAutoRunCode() {
+    if (!newWebsite() || !newCode()) return
+
+    const newCodes = [...autoRunCodes(), { website: newWebsite(), code: newCode() }]
+    setAutoRunCodes(newCodes)
+    store.set('autoruncodes', newCodes)
+    setNewWebsite('')
+    setNewCode('')
+  }
+
+  function removeAutoRunCode(index: number) {
+    const newCodes = autoRunCodes().filter((_, i) => i !== index)
+    setAutoRunCodes(newCodes)
+    store.set('autoruncodes', newCodes)
+  }
+
   return (
     <div class="flex flex-col items-center gap-4">
       <div class="box-border flex flex-wrap justify-center gap-6 pt-8">
@@ -212,6 +237,32 @@ export default function Settings() {
           </span>
         </div>
 
+        <div class="flex group relative w-80 flex-col items-center gap-4 rounded-box bg-base-200 p-4">
+          <h1 class="text-2xl font-semibold">about:blank Opener</h1>
+          <p class="text-center text-xs">Open current URL in an about:blank tab</p>
+          <button
+            class="btn btn-primary w-full" 
+            type="button"
+            onClick={() => {
+              const currentUrl = window.location.href
+              openAbWindow(currentUrl, false)
+            }}
+          >
+            Open in about:blank
+          </button>
+
+          <span
+            class="absolute top-2.5 right-2.5 text-base-content/50 opacity-0 group-hover:opacity-100 duration-150 cursor-pointer"
+            onMouseDown={() => {
+              setMoreInfoTitle('about:blank Opener')
+              setMoreInfoContent('This button will open the current page in a new about:blank tab. This is useful for hiding your browsing activity as about:blank tabs don\'t show up in your browser history.')
+              setMoreInfoVisiblity(true)
+            }}
+          >
+            <CircleHelp class="h-5 w-5" />
+          </span>
+        </div>
+
         <div class="collapse collapse-arrow">
           <input type="checkbox" />
           <div class="collapse-title left-1/2 w-1/3 -translate-x-1/2 text-xl font-medium">Advanced</div>
@@ -270,6 +321,72 @@ export default function Settings() {
                   onMouseDown={() => {
                     setMoreInfoTitle('Transports')
                     setMoreInfoContent('Changing the transport changes how Mocha fetches proxied requests. Each transport has its own method of doing this - changing it may improve compatibility with sites.')
+                    setMoreInfoVisiblity(true)
+                  }}
+                >
+                  <CircleHelp class="h-5 w-5" />
+                </span>
+              </div>
+
+              <div class="flex group relative w-80 flex-col items-center gap-4 rounded-box bg-base-200 p-4">
+                <h1 class="text-2xl font-semibold">Auto-Run Code</h1>
+                <p class="text-center text-xs">Add JavaScript code to automatically run on specific websites</p>
+                
+                <div class="flex flex-col gap-4 w-full">
+                  {autoRunCodes().map((item, index) => (
+                    <div class="card bg-base-300">
+                      <div class="card-body p-4">
+                        <div class="flex justify-between items-start">
+                          <div class="flex items-center gap-2">
+                            <Globe class="h-5 w-5" />
+                            <span class="font-medium">{item.website}</span>
+                          </div>
+                          <button
+                            class="btn btn-ghost btn-sm"
+                            onClick={() => removeAutoRunCode(index)}
+                          >
+                            Remove
+                          </button>
+                        </div>
+                        <div class="flex items-center gap-2 mt-2">
+                          <Code class="h-4 w-4" />
+                          <code class="text-sm opacity-70">{item.code}</code>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div class="flex flex-col gap-4 w-full">
+                  <input
+                    type="text"
+                    class="input input-bordered w-full"
+                    placeholder="Website URL (e.g. youtube.com)"
+                    value={newWebsite()}
+                    onInput={e => setNewWebsite(e.currentTarget.value)}
+                  />
+
+                  <textarea
+                    class="textarea textarea-bordered h-24 font-mono"
+                    placeholder="JavaScript code to run"
+                    value={newCode()}
+                    onInput={e => setNewCode(e.currentTarget.value)}
+                  />
+
+                  <button
+                    class="btn btn-primary w-full"
+                    onClick={addAutoRunCode}
+                    disabled={!newWebsite() || !newCode()}
+                  >
+                    Add Auto-Run Code
+                  </button>
+                </div>
+
+                <span
+                  class="absolute top-2.5 right-2.5 text-base-content/50 opacity-0 group-hover:opacity-100 duration-150 cursor-pointer"
+                  onMouseDown={() => {
+                    setMoreInfoTitle('Auto-Run Code')
+                    setMoreInfoContent('Add JavaScript code that will automatically run when you visit specific websites through the proxy. This can be used to customize websites or add features.')
                     setMoreInfoVisiblity(true)
                   }}
                 >
