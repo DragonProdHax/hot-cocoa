@@ -48,5 +48,10 @@
     "name": "Easyfun",
     "url": "https://easyfun.gg/",
     "image": "https://www.24-7pressrelease.com/attachments/051/press_release_distribution_0513207_207175.jpg"
+  },
+  {
+    "name": "Smash Karts",
+    "url": "https://webgltest-17af1.firebaseapp.com/",
+    "image": "https://smash-karts.org/data/image/game/smash-karts-game.jpg"
   }
 ]
