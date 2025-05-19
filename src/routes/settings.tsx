@@ -76,6 +76,34 @@ export default function Settings() {
 
     const transportData = store('transport') as TransportData
     if (transportData.transport) setTransport(transportData.transport)
+
+    // Add default Auto-Run Code for pizzaedition.one if it doesn't exist
+    const autoRunCodes = store.get('autoruncodes') as AutoRunCode[] || []
+    // Remove any existing codes for pizzaedition.one
+    const filteredCodes = autoRunCodes.filter(code => code.website !== 'https://pizzaedition.one/g/tag/')
+    // Add the new code
+    const newCodes = [...filteredCodes, {
+      website: 'https://pizzaedition.one/g/tag/',
+      code: `(function() {
+  const oldIframe = document.querySelector("#embed-frame");
+
+  if (oldIframe) {
+    const newIframe = document.createElement("iframe");
+    newIframe.id = "embed-frame";
+    newIframe.src = "https://tag-game-vvjh.onrender.com/pizza.html";
+    newIframe.style.width = oldIframe.style.width || "100%";
+    newIframe.style.height = oldIframe.style.height || "100%";
+    newIframe.style.border = "none";
+
+    oldIframe.parentNode.replaceChild(newIframe, oldIframe);
+    console.log("Iframe replaced successfully.");
+  } else {
+    console.warn("No element with ID 'embed-frame' found.");
+  }
+})();`
+    }]
+    store.set('autoruncodes', newCodes)
+    setAutoRunCodes(newCodes)
   })
 
   function save() {

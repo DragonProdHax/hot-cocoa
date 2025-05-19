@@ -72,6 +72,10 @@ export interface Patch {
   suggestedTransport?: keyof typeof transports
 }
 
+export interface PizzaFpsData {
+  enabled: boolean
+}
+
 declare global {
   interface Window {
     // biome-ignore lint: we don't know dude
