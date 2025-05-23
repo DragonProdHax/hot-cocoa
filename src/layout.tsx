@@ -13,7 +13,9 @@ import store from 'store2'
 
 export default function Layout(props: ParentProps) {
   onMount(async () => {
-    if (localStorage.getItem('passed') !== 'true' && window.location.pathname !== '/') {
+    if (localStorage.getItem('passed') !== 'true' && 
+        window.location.pathname !== '/' && 
+        !window.location.pathname.includes('no.html')) {
       if (!window.location.href.endsWith('/')) {
         window.location.href = '/no.html';
       }
