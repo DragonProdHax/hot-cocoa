@@ -13,6 +13,11 @@ import store from 'store2'
 
 export default function Layout(props: ParentProps) {
   onMount(async () => {
+    if (localStorage.getItem('passed') !== 'true') {
+      window.location.href = '/\'';
+      return;
+    }
+    
     handleTabCloak()
     handleTheme()
     handleAboutBlank()

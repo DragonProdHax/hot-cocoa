@@ -291,6 +291,31 @@ export default function Settings() {
           </span>
         </div>
 
+        <div class="flex group relative w-80 flex-col items-center gap-4 rounded-box bg-base-200 p-4">
+          <h1 class="text-2xl font-semibold">Storage</h1>
+          <p class="text-center text-xs">Clear all stored data and settings</p>
+          <button 
+            class="btn btn-error w-full" 
+            onClick={() => {
+              localStorage.clear();
+              window.location.reload();
+            }}
+          >
+            Clear All Data
+          </button>
+
+          <span
+            class="absolute top-2.5 right-2.5 text-base-content/50 opacity-0 group-hover:opacity-100 duration-150 cursor-pointer"
+            onMouseDown={() => {
+              setMoreInfoTitle('Clear Storage')
+              setMoreInfoContent("This will clear all stored data including settings, bookmarks, and other preferences. The page will reload after clearing.")
+              setMoreInfoVisiblity(true)
+            }}
+          >
+            <CircleHelp class="h-5 w-5" />
+          </span>
+        </div>
+
         <div class="collapse collapse-arrow">
           <input type="checkbox" />
           <div class="collapse-title left-1/2 w-1/3 -translate-x-1/2 text-xl font-medium">Advanced</div>
