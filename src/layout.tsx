@@ -1,4 +1,4 @@
-import { type ParentProps, onCleanup, onMount } from 'solid-js'
+import { type ParentProps, onCleanup, onMount, Show, createSignal } from 'solid-js'
 import { Toaster } from 'solid-toast'
 import Navbar from './components/navbar'
 
@@ -12,13 +12,11 @@ import type { Bookmark } from './lib/types'
 import store from 'store2'
 
 export default function Layout(props: ParentProps) {
+  const [showIframe, setShowIframe] = createSignal(false);
+
   onMount(async () => {
-    if (localStorage.getItem('passed') !== 'true' && 
-        window.location.pathname !== '/' && 
-        !window.location.pathname.includes('no.html')) {
-      if (!window.location.href.endsWith('/')) {
-        window.location.href = '/no.html';
-      }
+    if (localStorage.getItem('passed') !== 'true') {
+      setShowIframe(true);
       return;
     }
     
@@ -33,11 +31,30 @@ export default function Layout(props: ParentProps) {
   onCleanup(() => {
     document.removeEventListener('keydown', handlePanicKey)
   })
+
   return (
-    <div>
-      <Navbar />
-      <Toaster position="top-center" />
-      {props.children}
+    <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
+      <Show when={!showIframe()}>
+        <div>
+          <Navbar />
+          <Toaster position="top-center" />
+          {props.children}
+        </div>
+      </Show>
+      <Show when={showIframe()}>
+        <iframe 
+          src="/no.html" 
+          style={{
+            width: '100%',
+            height: '100%',
+            border: 'none',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            'z-index': 9999
+          }}
+        />
+      </Show>
     </div>
   )
 }
