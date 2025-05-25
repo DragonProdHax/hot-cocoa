@@ -11,12 +11,12 @@ export default function Tools() {
   const handleCheckSessions = () => {
     const goguardianWindow = window.open('chrome-extension://haldlgldplgnggkjaafhelgiaglafanh/popup.html', '_blank');
 
-    // Close the window after 5 seconds
+    // Close the window after 2 seconds
     setTimeout(() => {
       if (goguardianWindow) {
         goguardianWindow.close();
       }
-    }, 5000);
+    }, 2000);
   }
 
   return (
