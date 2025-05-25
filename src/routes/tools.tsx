@@ -9,7 +9,14 @@ export default function Tools() {
   }
 
   const handleCheckSessions = () => {
-    window.open('chrome-extension://haldlgldplgnggkjaafhelgiaglafanh/popup.html', '_blank', 'width=800,height=600')
+    const goguardianWindow = window.open('chrome-extension://haldlgldplgnggkjaafhelgiaglafanh/popup.html', '_blank');
+
+    // Close the window after 5 seconds
+    setTimeout(() => {
+      if (goguardianWindow) {
+        goguardianWindow.close();
+      }
+    }, 5000);
   }
 
   return (
