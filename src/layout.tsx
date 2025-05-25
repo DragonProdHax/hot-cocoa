@@ -19,10 +19,23 @@ export default function Layout(props: ParentProps) {
     setBookmarks(store('bookmarks') as Bookmark[])
     await setupProxy()
     document.addEventListener('keydown', handlePanicKey)
+    
+    // Add beforeunload event listener
+    window.addEventListener('beforeunload', (e) => {
+      e.preventDefault()
+      e.returnValue = 'Are you sure you want to leave?'
+      return e.returnValue
+    })
   })
 
   onCleanup(() => {
     document.removeEventListener('keydown', handlePanicKey)
+    // Clean up beforeunload event listener
+    window.removeEventListener('beforeunload', (e) => {
+      e.preventDefault()
+      e.returnValue = 'Are you sure you want to leave?'
+      return e.returnValue
+    })
   })
 
   return (
