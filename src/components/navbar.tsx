@@ -1,5 +1,5 @@
 import { A, useLocation } from '@solidjs/router'
-import { Joystick, Layers, Settings, Bell, Globe, BarChart } from 'lucide-solid'
+import { Joystick, Layers, Settings, Bell, Globe, Wrench } from 'lucide-solid'
 import { Show } from 'solid-js'
 
 export default function Navbar() {
@@ -23,6 +23,11 @@ export default function Navbar() {
           </A>
         </div>
         <div class="navbar-end gap-2">
+          <A href="/tools">
+            <button class="btn btn-ghost h-10 min-h-10" type="button">
+              <Wrench class="h-5 w-5" /> Tools
+            </button>
+          </A>
           <A href="/proxy">
             <button class="btn btn-ghost h-10 min-h-10" type="button">
               <Globe class="h-5 w-5" /> Proxy
@@ -36,11 +41,6 @@ export default function Navbar() {
           <A href="/shortcuts">
             <button class="btn btn-ghost h-10 min-h-10" type="button">
               <Layers class="h-5 w-5" /> Apps
-            </button>
-          </A>
-          <A href="/stats">
-            <button class="btn btn-ghost h-10 min-h-10" type="button">
-              <BarChart class="h-5 w-5" /> Stats
             </button>
           </A>
           <A href="/updates">

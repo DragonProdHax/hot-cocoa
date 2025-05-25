@@ -13,7 +13,7 @@ import Shortcuts from './routes/shortcuts'
 import Bookmarks from './routes/bookmarks'
 import Updates from './routes/updates'
 import Proxy from './routes/proxy'
-import Stats from './routes/stats'
+import Tools from './routes/tools'
 import './style.css'
 
 store.set(
@@ -97,7 +97,7 @@ render(
       <Route path="/settings" component={Settings} />
       <Route path="/updates" component={Updates} />
       <Route path="/proxy" component={Proxy} />
-      <Route path="/stats" component={Stats} />
+      <Route path="/tools" component={Tools} />
     </Router>
   ),
   root
