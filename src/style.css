@@ -7,3 +7,200 @@
     font-family: 'Quicksand', sans-serif;
   }
 }
+
+/* Abstract Theme Animations */
+[data-theme="abstract"] {
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="abstract"]::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(17, 24, 39, 0.95) 0%, rgba(31, 41, 55, 0.9) 100%);
+  animation: abstractFlow 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -2;
+}
+
+[data-theme="abstract"]::after {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200vw;
+  height: 200vh;
+  background: 
+    radial-gradient(ellipse at 30% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 30%, rgba(6, 182, 212, 0.08) 0%, transparent 40%);
+  animation: abstractRotate 30s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Floating abstract shapes */
+[data-theme="abstract"] .abstract-shape {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(1px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+[data-theme="abstract"] .abstract-shape:nth-child(1) {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+  top: 10%;
+  left: 10%;
+  animation: float1 15s ease-in-out infinite;
+}
+
+[data-theme="abstract"] .abstract-shape:nth-child(2) {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+  top: 60%;
+  right: 15%;
+  animation: float2 18s ease-in-out infinite reverse;
+}
+
+[data-theme="abstract"] .abstract-shape:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, transparent 70%);
+  bottom: 20%;
+  left: 30%;
+  animation: float3 12s ease-in-out infinite;
+}
+
+/* Scrolling liquid effects */
+[data-theme="abstract"] .liquid-trail {
+  position: fixed;
+  width: 3px;
+  height: 100px;
+  background: linear-gradient(180deg, 
+    rgba(139, 92, 246, 0.6) 0%, 
+    rgba(6, 182, 212, 0.4) 50%, 
+    transparent 100%);
+  border-radius: 50px;
+  pointer-events: none;
+  z-index: -1;
+  animation: liquidDrop 8s linear infinite;
+}
+
+/* Keyframe animations */
+@keyframes abstractFlow {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  33% {
+    transform: scale(1.1) rotate(120deg);
+    filter: hue-rotate(60deg);
+  }
+  66% {
+    transform: scale(0.9) rotate(240deg);
+    filter: hue-rotate(120deg);
+  }
+}
+
+@keyframes abstractRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes float1 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+    opacity: 0.3;
+  }
+  33% {
+    transform: translateY(-30px) translateX(20px) scale(1.1);
+    opacity: 0.5;
+  }
+  66% {
+    transform: translateY(20px) translateX(-15px) scale(0.9);
+    opacity: 0.2;
+  }
+}
+
+@keyframes float2 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-40px) translateX(-25px) rotate(180deg);
+    opacity: 0.4;
+  }
+}
+
+@keyframes float3 {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translateY(15px) scale(0.8);
+    opacity: 0.3;
+  }
+}
+
+@keyframes liquidDrop {
+  0% {
+    top: -100px;
+    opacity: 0;
+    transform: scaleY(0.5);
+  }
+  10% {
+    opacity: 0.8;
+    transform: scaleY(1);
+  }
+  90% {
+    opacity: 0.8;
+    transform: scaleY(1);
+  }
+  100% {
+    top: 100vh;
+    opacity: 0;
+    transform: scaleY(0.5);
+  }
+}
+
+/* Enhanced transparency effects for abstract theme */
+[data-theme="abstract"] .card,
+[data-theme="abstract"] .navbar,
+[data-theme="abstract"] .modal-box {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+[data-theme="abstract"] .btn {
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+[data-theme="abstract"] .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+}

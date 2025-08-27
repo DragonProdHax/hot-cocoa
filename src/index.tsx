@@ -14,6 +14,7 @@ import Bookmarks from './routes/bookmarks'
 import Updates from './routes/updates'
 import Proxy from './routes/proxy'
 import Tools from './routes/tools'
+import MikeIkes from './routes/mike-ikes'
 import './style.css'
 
 store.set(
@@ -98,6 +99,7 @@ render(
       <Route path="/updates" component={Updates} />
       <Route path="/proxy" component={Proxy} />
       <Route path="/tools" component={Tools} />
+      <Route path="/mike-ikes" component={MikeIkes} />
     </Router>
   ),
   root

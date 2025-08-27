@@ -1,6 +1,7 @@
 import { type ParentProps, onCleanup, onMount } from 'solid-js'
 import { Toaster } from 'solid-toast'
 import Navbar from './components/navbar'
+import AbstractEffects from './components/abstract-effects'
 
 import { handleAboutBlank } from './lib/aboutblank'
 import { handleTabCloak } from './lib/cloak'
@@ -42,6 +43,7 @@ export default function Layout(props: ParentProps) {
     <div>
       <Navbar />
       <Toaster position="top-center" />
+      <AbstractEffects />
       {props.children}
     </div>
   )
