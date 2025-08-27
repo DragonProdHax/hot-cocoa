@@ -1,4 +1,4 @@
-/*global Ultraviolet*/
+/*global Ultraviolet aka some sh*t*/
 self.__uv$config = {
   prefix: '/~/',
   encodeUrl: Ultraviolet.codec.xor.encode,
