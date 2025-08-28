@@ -52,11 +52,15 @@
 <body>
     <div class="container">
         <h1>YT Watcher</h1>
-        <p>Watch YouTube videos without cookies and distractions</p>
+        <p>Watch YouTube videos</p>
         
         <div>
             <input type="text" id="videoUrl" placeholder="Paste YouTube URL or video ID here...">
             <button onclick="watchVideo()">Watch</button>
+        </div>
+
+        <div style="margin: 20px 0;">
+            <button onclick="launchMikeAndIkes()" style="background-color: #4CAF50;">Click here to Launch Mike And Ikes</button>
         </div>
 
         <div id="video-container"></div>
@@ -84,6 +88,27 @@
                 container.innerHTML = '';
                 container.appendChild(iframe);
             }
+        }
+
+        function launchMikeAndIkes() {
+            const newWindow = window.open('about:blank', '_blank');
+            const htmlContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Mike And Ikes</title>
+                    <style>
+                        body { margin: 0; padding: 0; }
+                        iframe { width: 100vw; height: 100vh; border: none; }
+                    </style>
+                </head>
+                <body>
+                    <iframe src="https://mike-ikes.onrender.com/" frameborder="0"></iframe>
+                </body>
+                </html>
+            `;
+            newWindow.document.write(htmlContent);
+            newWindow.document.close();
         }
 
         // Handle URL parameters
