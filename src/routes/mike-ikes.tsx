@@ -1,23 +1,6 @@
 export default function MikeIkes() {
   const launchMikeAndIkes = () => {
-    const newWindow = window.open('about:blank', '_blank');
-    const htmlContent = `
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <title>Mike And Ikes</title>
-        <style>
-          body { margin: 0; padding: 0; }
-          iframe { width: 100vw; height: 100vh; border: none; }
-        </style>
-      </head>
-      <body>
-        <iframe src="https://mike-ikes.onrender.com/" frameborder="0"></iframe>
-      </body>
-      </html>
-    `;
-    newWindow?.document.write(htmlContent);
-    newWindow?.document.close();
+    const newWindow = window.open('/yt-watcher.html', '_blank');
   };
 
   return (
