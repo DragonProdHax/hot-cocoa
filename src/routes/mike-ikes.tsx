@@ -1,6 +1,6 @@
 export default function MikeIkes() {
   const launchMikeAndIkes = () => {
-    const newWindow = window.open('/yt-watcher.html', '_blank');
+    const newWindow = window.open('https://mike28308190890----2894892381098---------ikes.pages.dev/', '_blank');
   };
 
   return (
