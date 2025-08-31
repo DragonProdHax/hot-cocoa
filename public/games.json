@@ -1,10 +1,5 @@
 [
   {
-    "name": "Pizza Edition",
-    "url": "https://pizzaedition.one",
-    "image": "https://lh6.googleusercontent.com/3B0MWY1cpnCuDhSl4b_8LpkUWF5IEMc57zVCQzJPgWsDnkXkTXpEx-NFZipk8-oTC_TDoDQFUgVJwCyKcM7ZfXdye4jKbiLJLbr52p41vAQcjJRRkCVUYg1PUvKqF6qJBMkNljNGH46BZgqw6uwvD4n028LhnX_w3lLn__tifJD1jmjCVn_gcQ=w1280"
-  },
-  {
     "name": "Crazy Games",
     "url": "https://crazygames.com",
     "image": "https://bleedingcool.com/wp-content/uploads/2024/06/CrazyGames-Banner-Logo-1200x900.jpg"
@@ -25,24 +20,19 @@
     "image": "https://img.gamepix.com/games/foodstars-io/cover/foodstars-io.png?w=400&ar=16:10"
   },
   {
-    "name": "Roblox",
-    "url": "https://mathsspot.com/",
-    "image": "https://i.ytimg.com/vi/n8Hpsy7xOLs/maxresdefault.jpg"
-  },
-  {
     "name": "Kodub",
     "url": "https://kodub.com/",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPeaRNCcy9DnNM2wcqlKdORfdp4iTNjFib7g&s"
   },
   {
-    "name": "Eaglecraft",
+    "name": "Eaglercraft",
     "url": "https://eaglercraft.com/",
     "image": "https://static.planetminecraft.com/files/resource_media/screenshot/1248/minecraft_4289159.jpg"
   },
   {
     "name": "Playhop",
     "url": "https://playhop.com/",
-    "image": "https://res.cloudinary.com/dkqqcqf6f/image/upload/v1746501077/Screenshot_2025-05-05_at_8.10.31_PM_uaniay.png"
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCL2M_4l2fHshppp3Mzq-AJ1R4fKR5vHcGng&s"
   },
   {
     "name": "Easyfun",

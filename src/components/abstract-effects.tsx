@@ -63,15 +63,5 @@ export default function AbstractEffects() {
     }
   }
 
-  return (
-    <>
-      {isAbstractTheme() && (
-        <>
-          <div class="abstract-shape" />
-          <div class="abstract-shape" />
-          <div class="abstract-shape" />
-        </>
-      )}
-    </>
-  )
+  return null
 }

@@ -7,7 +7,11 @@ export default function Navbar() {
 
   return (
     <Show when={!location.pathname.includes('/route/')}>
-      <div class="navbar m-3.5 w-[calc(100vw-1.75rem)] rounded-btn bg-base-300 px-6">
+      <div class={`navbar m-3.5 w-[calc(100vw-1.75rem)] rounded-btn px-6 ${
+        location.pathname === '/proxy' 
+          ? 'bg-black/10 backdrop-blur-sm border border-white/10' 
+          : 'bg-base-300'
+      }`}>
         <div class="navbar-start">
           <A href="/">
             <div class="btn btn-ghost -ml-2 flex h-11 min-h-11 gap-3">
@@ -35,7 +39,7 @@ export default function Navbar() {
           </A>
           <A href="/games">
             <button class="btn btn-ghost h-10 min-h-10" type="button">
-              <Joystick class="h-5 w-5" /> Gaming Sites
+              <Joystick class="h-5 w-5" /> Gaming
             </button>
           </A>
           <A href="/shortcuts">
