@@ -28,7 +28,7 @@ export default function Proxy() {
   const [isLoadingSuggestions, setIsLoadingSuggestions] = createSignal(false)
   
   // Maintenance mode variables
-  const [maintenance] = createSignal(true)
+  const [maintenance] = createSignal(false)
   const [clickCount, setClickCount] = createSignal(0)
   const [showPasswordField, setShowPasswordField] = createSignal(false)
   const [password, setPassword] = createSignal('')

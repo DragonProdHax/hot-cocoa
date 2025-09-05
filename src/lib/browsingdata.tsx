@@ -39,7 +39,7 @@ export async function exportData() {
   const link = document.createElement('a')
   const file = new Blob([JSON.stringify(data)], { type: 'text/plain' })
   link.href = URL.createObjectURL(file)
-  link.download = `mocha-export-${Date.now()}.json`
+  link.download = `Hot-Chocolate-export-${Date.now()}.json`
   link.click()
   URL.revokeObjectURL(link.href)
   link.remove()

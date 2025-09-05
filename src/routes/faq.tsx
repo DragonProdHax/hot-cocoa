@@ -6,9 +6,9 @@ export default function FAQ() {
       <h1 class="-mt-2 pb-2 text-4xl font-bold">FAQ</h1>
       <div class="collapse collapse-arrow bg-base-200">
         <input type="checkbox" name="faq" />
-        <div class="collapse-title text-xl font-medium">What is Mocha?</div>
+        <div class="collapse-title text-xl font-medium">What is Hot-Chocolate?</div>
         <div class="collapse-content">
-          <p>Mocha is a web proxy used to unblock websites at work or school. Your traffic is encrypted so no one can read it, not even us. </p>
+          <p>Hot-Chocolate is a web proxy used to unblock websites at work or school. Your traffic is encrypted so no one can read it, not even us. </p>
         </div>
       </div>
 

@@ -215,7 +215,7 @@ export default function Settings() {
             class="absolute top-2.5 right-2.5 text-base-content/50 opacity-0 group-hover:opacity-100 duration-150 cursor-pointer"
             onMouseDown={() => {
               setMoreInfoTitle('Panic Key')
-              setMoreInfoContent("Set the Panic Key field to automatically redirect to a website when you press that key. It's useful for when teachers are coming and you need to quickly close Mocha. The panic button also works when you're browsing inside the proxy!")
+              setMoreInfoContent("Set the Panic Key field to automatically redirect to a website when you press that key. It's useful for when teachers are coming and you need to quickly close Hot-Chocolate. The panic button also works when you're browsing inside the proxy!")
               setMoreInfoVisiblity(true)
             }}
           >
@@ -225,7 +225,7 @@ export default function Settings() {
 
         <div class="flex relative group w-80 flex-col items-center gap-4 rounded-box bg-base-200 p-4">
           <h1 class="text-2xl font-semibold">about:blank</h1>
-          <p class="text-center text-xs">Open Mocha in an about:blank tab automatically</p>
+          <p class="text-center text-xs">Open Hot-Chocolate in an about:blank tab automatically</p>
           <select class="select select-bordered w-full max-w-xs" value={aboutBlank()} onChange={(e) => setAboutBlank(e.target.value)}>
             <option value="enabled">Enabled</option>
             <option value="disabled">Disabled</option>
@@ -235,7 +235,7 @@ export default function Settings() {
             class="absolute top-2.5 right-2.5 text-base-content/50 opacity-0 group-hover:opacity-100 duration-150 cursor-pointer"
             onMouseDown={() => {
               setMoreInfoTitle('about:blank')
-              setMoreInfoContent("about:blank tabs don't show up in your history and appear as system pages or pages that are still loading. Enabling this setting enables Mocha to automatically launch inside one of these tabs, and Mocha won't show up in your history.")
+              setMoreInfoContent("about:blank tabs don't show up in your history and appear as system pages or pages that are still loading. Enabling this setting enables Hot-Chocolate to automatically launch inside one of these tabs, and Hot-Chocolate won't show up in your history.")
               setMoreInfoVisiblity(true)
             }}
           >
@@ -245,7 +245,7 @@ export default function Settings() {
 
         <div class="flex group relative w-80 flex-col items-center gap-4 rounded-box bg-base-200 p-4">
           <h1 class="text-2xl font-semibold">Theme</h1>
-          <p class="text-center text-xs">Change the styling of Mocha's UI</p>
+          <p class="text-center text-xs">Change the styling of Hot-Chocolate's UI</p>
           <select class="select select-bordered w-full max-w-xs" value={theme()} onChange={(e) => setTheme(e.target.value)}>
             {themes.map((item, index) => {
               // biome-ignore lint: it doesn't accept a key for some reason
@@ -257,7 +257,7 @@ export default function Settings() {
             class="absolute top-2.5 right-2.5 text-base-content/50 opacity-0 group-hover:opacity-100 duration-150 cursor-pointer"
             onMouseDown={() => {
               setMoreInfoTitle('Themes')
-              setMoreInfoContent("It's simple - themes change the colors of Mocha's UI.")
+              setMoreInfoContent("It's simple - themes change the colors of Hot-Chocolate's UI.")
               setMoreInfoVisiblity(true)
             }}
           >
@@ -333,7 +333,7 @@ export default function Settings() {
                   class="absolute top-2.5 right-2.5 text-base-content/50 opacity-0 group-hover:opacity-100 duration-150 cursor-pointer"
                   onMouseDown={() => {
                     setMoreInfoTitle('Debug Menu')
-                    setMoreInfoContent("Enabling this enables the Eruda devtools menu. This puts a little wrench icon in the bottom right of your screen and can be used in conjunction with Mocha's dev team to diagnose issues, even when you don't have normal Chrome devtools enabled on your device.")
+                    setMoreInfoContent("Enabling this enables the Eruda devtools menu. This puts a little wrench icon in the bottom right of your screen and can be used in conjunction with Hot-Chocolate's dev team to diagnose issues, even when you don't have normal Chrome devtools enabled on your device.")
                     setMoreInfoVisiblity(true)
                   }}
                 >
@@ -363,7 +363,7 @@ export default function Settings() {
 
               <div class="flex group relative w-80 flex-col items-center gap-4 rounded-box bg-base-200 p-4">
                 <h1 class="text-2xl font-semibold">Transport</h1>
-                <p class="text-center text-xs">Change how Mocha's proxy handles requests</p>
+                <p class="text-center text-xs">Change how Hot-Chocolate's proxy handles requests</p>
                 <select class="select select-bordered w-full max-w-xs" value={transport()} onChange={(e) => setTransport(e.target.value)}>
                   <option value="epoxy">Epoxy</option>
                   <option value="libcurl">Libcurl</option>
@@ -373,7 +373,7 @@ export default function Settings() {
                   class="absolute top-2.5 right-2.5 text-base-content/50 opacity-0 group-hover:opacity-100 duration-150 cursor-pointer"
                   onMouseDown={() => {
                     setMoreInfoTitle('Transports')
-                    setMoreInfoContent('Changing the transport changes how Mocha fetches proxied requests. Each transport has its own method of doing this - changing it may improve compatibility with sites.')
+                    setMoreInfoContent('Changing the transport changes how Hot-Chocolate fetches proxied requests. Each transport has its own method of doing this - changing it may improve compatibility with sites.')
                     setMoreInfoVisiblity(true)
                   }}
                 >
@@ -476,7 +476,7 @@ export default function Settings() {
                   onMouseDown={() => {
                     setMoreInfoTitle('Browsing Data')
                     setMoreInfoContent(
-                      "This section allows you to import or export Mocha's browsing data. This stores all of your logged in sites, history, and other data you would normally have in a typical browser into a single file. This means you can periodically download your browsing data and import it into a new Mocha link in case the one you're on now gets blocked. It's VERY IMPORTANT to know that you DO NOT SHARE this file with ANYONE."
+                      "This section allows you to import or export Hot-Chocolate's browsing data. This stores all of your logged in sites, history, and other data you would normally have in a typical browser into a single file. This means you can periodically download your browsing data and import it into a new Hot-Chocolate link in case the one you're on now gets blocked. It's VERY IMPORTANT to know that you DO NOT SHARE this file with ANYONE."
                     )
                     setMoreInfoVisiblity(true)
                   }}
