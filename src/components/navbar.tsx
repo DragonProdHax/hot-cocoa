@@ -62,6 +62,18 @@ export default function Navbar() {
               <Settings class="h-5 w-5" /> Settings
             </button>
           </A>
+          <button 
+            class="btn btn-ghost h-8 min-h-8 px-2" 
+            type="button"
+            onClick={() => window.open('https://pizza-is-yummy-with-hotcocoa.onrender.com/', '_blank')}
+          >
+            <img 
+              src="https://pizzaedition.win/images/pizzalogo.png" 
+              alt="Pizza Edition" 
+              class="h-4 w-4 rounded"
+            />
+            <span class="text-sm">Pizza</span>
+          </button>
         </div>
       </div>
     </Show>
