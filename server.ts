@@ -5,6 +5,7 @@ import wisp from 'wisp-server-node'
 import http from 'node:http'
 import path from 'node:path'
 import { build } from 'vite'
+import { spawn } from 'node:child_process'
 import type { Socket } from 'node:net'
 
 const httpServer = http.createServer()
@@ -15,6 +16,18 @@ const port = process.env.PORT || 3003
 
 consola.start('Building frontend')
 await build()
+
+// Start hyperbeam server
+consola.start('Starting Hyperbeam server')
+const hyperbeamProcess = spawn('npm', ['start'], {
+  cwd: path.join(process.cwd(), 'hyperbeam'),
+  stdio: 'inherit',
+  env: { ...process.env, HYPERBEAM_PORT: '3001' }
+})
+
+hyperbeamProcess.on('error', (err) => {
+  consola.error('Failed to start Hyperbeam server:', err)
+})
 
 app.use(express.static('dist'))
 
@@ -46,7 +59,19 @@ httpServer.on('upgrade', (req, socket, head) => {
 })
 
 httpServer.on('listening', () => {
-  consola.info(`Listening on http://localhost:${port}`)
+  consola.info(`Hot Chocolate listening on http://localhost:${port}`)
+  consola.info(`Hyperbeam server running on port 3001`)
+})
+
+// Clean up hyperbeam process on exit
+process.on('SIGINT', () => {
+  hyperbeamProcess.kill()
+  process.exit()
+})
+
+process.on('SIGTERM', () => {
+  hyperbeamProcess.kill()
+  process.exit()
 })
 
 httpServer.listen({

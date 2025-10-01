@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "concurrently \"tsx server.ts\" \"cd hyperbeam && npm start\"",
+    "start": "tsx server.ts",
     "start:main": "tsx server.ts",
     "start:hyperbeam": "cd hyperbeam && npm start"
   },
