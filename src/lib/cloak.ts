@@ -7,7 +7,8 @@ export function handleTabCloak() {
   if (tabData.name) {
     document.title = tabData.name
   } else {
-    document.title = 'Hot Chocolate'  }
+    document.title = 'Classroom'
+  }
 
   if (tabData.icon) {
     ;(document.querySelector('link[rel~=icon]') as HTMLLinkElement).href = tabData.icon

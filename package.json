@@ -1,5 +1,5 @@
 {
-  "name": "Hot-Chocolate",
+  "name": "hot-chocolate",
   "private": true,
   "version": "2.0.0",
   "type": "module",
@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "tsx server.ts"
+    "start": "concurrently \"tsx server.ts\" \"cd hyperbeam && npm start\"",
+    "start:main": "tsx server.ts",
+    "start:hyperbeam": "cd hyperbeam && npm start"
   },
   "dependencies": {
     "@mercuryworkshop/bare-mux": "^2.1.7",
@@ -18,6 +20,7 @@
     "@titaniumnetwork-dev/ultraviolet": "^3.2.10",
     "autoprefixer": "^10.4.19",
     "clsx": "^2.1.1",
+    "concurrently": "^9.2.1",
     "consola": "^3.2.3",
     "daisyui": "^4.12.2",
     "express": "^4.19.2",

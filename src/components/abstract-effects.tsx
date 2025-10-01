@@ -29,10 +29,11 @@ export default function AbstractEffects() {
     if (isAbstractTheme()) {
       createLiquidTrails()
       const interval = setInterval(createLiquidTrails, 3000)
-      onCleanup(() => clearInterval(interval))
+      return () => clearInterval(interval)
     } else {
       // Clean up existing trails
-      liquidTrails().forEach(trail => trail.remove())
+      const trails = liquidTrails()
+      trails.forEach(trail => trail.remove())
       setLiquidTrails([])
     }
   })

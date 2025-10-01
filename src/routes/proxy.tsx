@@ -302,7 +302,7 @@ export default function Proxy() {
   const shouldShowMaintenance = () => maintenance() && !isAdmin()
 
   return (
-    <div class="min-h-screen relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div class="h-screen overflow-hidden relative">
       {/* Maintenance Screen */}
       {shouldShowMaintenance() && (
         <div class="fixed inset-0 z-50 flex flex-col items-center justify-center p-8 bg-black/50 backdrop-blur-sm">
@@ -374,7 +374,7 @@ export default function Proxy() {
           <div class="flex items-center gap-2 text-white">
             <Zap class="w-8 h-8 text-yellow-400" fill="currentColor" />
             <SplitText 
-              text="Proxy"
+              text="Pr0xy"
               class="text-3xl font-bold"
               delay={50}
               duration={0.8}
@@ -406,7 +406,7 @@ export default function Proxy() {
               </div>
               <input
                 type="text"
-                class="w-full bg-slate-800 border border-slate-700 rounded-full py-4 pl-14 pr-16 text-white placeholder-slate-400 focus:outline-none focus:border-slate-600 focus:ring-1 focus:ring-slate-600"
+                class="w-full bg-base-200 border border-base-300 rounded-full py-4 pl-14 pr-16 text-base-content placeholder-base-content/50 focus:outline-none focus:border-base-300 focus:ring-1 focus:ring-base-300"
                 placeholder={`Search ${searchEngine() === 'google' ? 'Google' : 'DuckDuckGo'} or type URL`}
                 value={url()}
                 onInput={e => handleInputChange(e.currentTarget.value)}
@@ -425,24 +425,24 @@ export default function Proxy() {
           
           {/* Suggestions Dropdown */}
           {(showSuggestions() || isLoadingSuggestions()) && (
-            <div class="absolute top-full left-0 right-0 mt-2 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-10 max-h-64 overflow-y-auto">
+            <div class="absolute top-full left-0 right-0 mt-2 bg-base-200 border border-base-300 rounded-lg shadow-lg z-10 max-h-64 overflow-y-auto">
               {isLoadingSuggestions() && suggestions().length === 0 && (
-                <div class="px-4 py-3 text-slate-400 text-sm flex items-center gap-3">
-                  <div class="w-4 h-4 border-2 border-slate-400 border-t-transparent rounded-full animate-spin"></div>
+                <div class="px-4 py-3 text-base-content/70 text-sm flex items-center gap-3">
+                  <div class="w-4 h-4 border-2 border-base-content/70 border-t-transparent rounded-full animate-spin"></div>
                   <span>Generating suggestions...</span>
                 </div>
               )}
               {suggestions().map((suggestion, index) => (
                 <button
-                  class={`w-full text-left px-4 py-3 hover:bg-slate-700 transition-colors border-b border-slate-700 last:border-b-0 ${
-                    selectedSuggestion() === index ? 'bg-slate-700' : ''
+                  class={`w-full text-left px-4 py-3 hover:bg-base-300 transition-colors border-b border-base-300 last:border-b-0 ${
+                    selectedSuggestion() === index ? 'bg-base-300' : ''
                   }`}
                   onClick={() => handleSuggestionClick(suggestion)}
                   onMouseEnter={() => setSelectedSuggestion(index)}
                 >
                   <div class="flex items-center gap-3">
-                    <Search class="w-4 h-4 text-slate-400" />
-                    <span class="text-white text-sm truncate">{suggestion}</span>
+                    <Search class="w-4 h-4 text-base-content/70" />
+                    <span class="text-base-content text-sm truncate">{suggestion}</span>
                   </div>
                 </button>
               ))}
@@ -456,7 +456,7 @@ export default function Proxy() {
           <div class="flex flex-col items-center gap-2 relative group">
             <div class="relative">
               <button
-                class={`w-16 h-16 ${shortcut.bgColor} rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-lg border border-slate-600`}
+                class={`w-16 h-16 ${shortcut.bgColor} rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-lg border border-base-300`}
                 onClick={() => handleShortcut(shortcut.url)}
               >
                 <img 
@@ -509,11 +509,11 @@ export default function Proxy() {
                     setEditName('')
                   }
                 }}
-                class="text-slate-400 text-sm font-medium bg-slate-700 border border-slate-600 rounded px-2 py-1 text-center w-20"
+                class="text-base-content/70 text-sm font-medium bg-base-200 border border-base-300 rounded px-2 py-1 text-center w-20"
                 autofocus
               />
             ) : (
-              <span class="text-slate-400 text-sm font-medium">{shortcut.name}</span>
+              <span class="text-base-content/70 text-sm font-medium">{shortcut.name}</span>
             )}
           </div>
         ))}
@@ -521,12 +521,12 @@ export default function Proxy() {
         {/* Add New Button */}
         <div class="flex flex-col items-center gap-2">
           <button 
-            class="w-16 h-16 bg-transparent rounded-full flex items-center justify-center hover:scale-110 transition-transform border-2 border-dashed border-slate-600"
+            class="w-16 h-16 bg-transparent rounded-full flex items-center justify-center hover:scale-110 transition-transform border-2 border-dashed border-base-300"
             onClick={() => setShowAddModal(true)}
           >
-            <Plus class="h-8 w-8 text-slate-400" />
+            <Plus class="h-8 w-8 text-base-content/70" />
           </button>
-          <span class="text-slate-400 text-sm font-medium">New</span>
+          <span class="text-base-content/70 text-sm font-medium">New</span>
         </div>
       </div>
       </div>
@@ -534,27 +534,27 @@ export default function Proxy() {
       {/* Add Shortcut Modal */}
       {showAddModal() && (
         <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div class="bg-slate-800 rounded-lg p-6 w-96">
-            <h3 class="text-xl font-bold text-white mb-4">Add New Shortcut</h3>
+          <div class="bg-base-200 rounded-lg p-6 w-96">
+            <h3 class="text-xl font-bold text-base-content mb-4">Add New Shortcut</h3>
             <div class="space-y-4">
               <input
                 type="text"
                 placeholder="Name (e.g. YouTube)"
-                class="w-full bg-slate-700 border border-slate-600 rounded px-3 py-2 text-white placeholder-slate-400"
+                class="w-full bg-base-300 border border-base-content/20 rounded px-3 py-2 text-base-content placeholder-base-content/50"
                 value={newShortcutName()}
                 onInput={(e) => setNewShortcutName(e.currentTarget.value)}
               />
               <input
                 type="text"
                 placeholder="URL (e.g. youtube.com)"
-                class="w-full bg-slate-700 border border-slate-600 rounded px-3 py-2 text-white placeholder-slate-400"
+                class="w-full bg-base-300 border border-base-content/20 rounded px-3 py-2 text-base-content placeholder-base-content/50"
                 value={newShortcutUrl()}
                 onInput={(e) => setNewShortcutUrl(e.currentTarget.value)}
               />
               <input
                 type="text"
                 placeholder="Icon URL (optional - will use favicon if empty)"
-                class="w-full bg-slate-700 border border-slate-600 rounded px-3 py-2 text-white placeholder-slate-400"
+                class="w-full bg-base-300 border border-base-content/20 rounded px-3 py-2 text-base-content placeholder-base-content/50"
                 value={newShortcutIcon()}
                 onInput={(e) => setNewShortcutIcon(e.currentTarget.value)}
               />
@@ -566,7 +566,7 @@ export default function Proxy() {
                   Add
                 </button>
                 <button
-                  class="flex-1 bg-slate-600 hover:bg-slate-700 text-white px-4 py-2 rounded transition-colors"
+                  class="flex-1 bg-base-300 hover:bg-base-content/20 text-base-content px-4 py-2 rounded transition-colors"
                   onClick={() => setShowAddModal(false)}
                 >
                   Cancel

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Fullscreen</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .loading {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        iframe {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+        }
+        .youtube-embed {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="loading">Loading YouTube...</div>
+        <div class="loading">Click any video to auto-fullscreen</div>
+    </div>
+
+    <script>
+        // Redirect to YouTube after a short delay
+        setTimeout(() => {
+            window.location.href = 'https://www.youtube.com';
+        }, 2000);
+
+        // Add event listener to detect when we're on YouTube
+        window.addEventListener('load', () => {
+            if (window.location.hostname === 'www.youtube.com') {
+                // Wait for page to load then try to make videos fullscreen
+                setTimeout(() => {
+                    // Function to make video fullscreen
+                    function makeFullscreen() {
+                        const video = document.querySelector('video');
+                        const fullscreenBtn = document.querySelector('button[title="Full screen"], button[aria-label="Full screen"], .ytp-fullscreen-button');
+                        
+                        if (fullscreenBtn) {
+                            fullscreenBtn.click();
+                        } else if (video && video.requestFullscreen) {
+                            video.requestFullscreen();
+                        }
+                    }
+
+                    // Try to click first video and make it fullscreen
+                    const firstVideo = document.querySelector('a#video-title, ytd-rich-item-renderer a, a[href*="/watch"]');
+                    if (firstVideo) {
+                        firstVideo.click();
+                        setTimeout(makeFullscreen, 3000);
+                    }
+
+                    // Also add click listeners to all video links
+                    document.addEventListener('click', (e) => {
+                        const target = e.target.closest('a[href*="/watch"]');
+                        if (target) {
+                            setTimeout(makeFullscreen, 3000);
+                        }
+                    });
+
+                    // Try to make any currently playing video fullscreen
+                    makeFullscreen();
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>

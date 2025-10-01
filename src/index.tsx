@@ -14,7 +14,10 @@ import Bookmarks from './routes/bookmarks'
 import Updates from './routes/updates'
 import Proxy from './routes/proxy'
 import Tools from './routes/tools'
-import MikeIkes from './routes/mike-ikes'
+import YouTube from './routes/youtube'
+import Navigate from './routes/navigate'
+import Sessions from './routes/sessions'
+import Resume from './routes/resume'
 import './style.css'
 
 store.set(
@@ -99,7 +102,10 @@ render(
       <Route path="/updates" component={Updates} />
       <Route path="/proxy" component={Proxy} />
       <Route path="/tools" component={Tools} />
-      <Route path="/mike-ikes" component={MikeIkes} />
+      <Route path="/youtube" component={YouTube} />
+      <Route path="/navigate/:url" component={Navigate} />
+      <Route path="/sessions" component={Sessions} />
+      <Route path="/resume/:sessionId" component={Resume} />
     </Router>
   ),
   root

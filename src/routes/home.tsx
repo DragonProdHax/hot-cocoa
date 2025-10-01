@@ -44,7 +44,7 @@ export default function Home() {
   }
 
   return (
-    <div class="min-h-screen bg-gradient-to-br from-amber-900 via-orange-800 to-amber-950" onClick={handleClick}>
+    <div class="min-h-screen" onClick={handleClick}>
       {!showPassword() && !showProxy() && (
         <div class="absolute left-1/2 top-1/2 flex w-screen -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4">
           <div class="flex items-center gap-3">

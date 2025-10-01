@@ -1,5 +1,5 @@
 import { A, useLocation } from '@solidjs/router'
-import { Joystick, Layers, Settings, Bell, Globe, Wrench, Youtube } from 'lucide-solid'
+import { Bell, Globe, Joystick, Layers, Settings, Youtube, Monitor, Wrench } from 'lucide-solid'
 import { Show } from 'solid-js'
 
 export default function Navbar() {
@@ -47,9 +47,14 @@ export default function Navbar() {
               <Layers class="h-5 w-5" /> Apps
             </button>
           </A>
-          <A href="/mike-ikes">
+          <A href="/youtube">
             <button class="btn btn-ghost h-10 min-h-10" type="button">
-              <Youtube class="h-5 w-5" /> Mike Ikes
+              <Youtube class="h-5 w-5" /> YouTube
+            </button>
+          </A>
+          <A href="/sessions">
+            <button class="btn btn-ghost h-10 min-h-10" type="button">
+              <Monitor class="h-5 w-5" /> Sessions
             </button>
           </A>
           <A href="/updates">
