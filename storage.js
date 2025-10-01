@@ -1,11 +1,19 @@
 //CrackinPMG Old Menu
 
+// Load inversities utility
+var inversitiesScript = document.createElement("script");
+inversitiesScript.src = "./inversities.js";
+document.head.appendChild(inversitiesScript);
 
 var script = document.createElement("script");
 script.src = "https://cdn.jsdelivr.net/npm/sweetalert2@11";
 document.head.appendChild(script);
 
-script.onload = function() {
+// Wait for both scripts to load
+Promise.all([
+  new Promise(resolve => inversitiesScript.onload = resolve),
+  new Promise(resolve => script.onload = resolve)
+]).then(function() {
   console.log("SweetAlert2 loaded!");
 
   // Create style element
@@ -684,7 +692,7 @@ function changeName(nameType) {
       });
     }
   });
-}}
+}
 
   // Get toggle buttons
   var noclipToggle = document.getElementById("noclip-toggle");
@@ -1295,37 +1303,7 @@ plus_membership_toggle.addEventListener("click", function() {
 
 // Magicoin script v v v v v v
 
-var magicoinHandler = function() {
-  var _ = {};
-  return Promise.all(Array.from(document.scripts).map(async function(script) {
-    if (script.src.includes("https://code.prodigygame.com/code")) {
-      try {
-        await (await fetch(script.src)).text();
-        var container = Boot.prototype.game._state._current._inversifyContainer;
-        container._bindingDictionary._map.forEach(function(binding, key) {
-          try {
-            var instance = container.get(key);
-            if (instance && typeof instance === "object") {
-              // Copy own properties
-              for (var prop of Object.getOwnPropertyNames(instance)) {
-                _[prop] = instance[prop];
-              }
-              // Copy prototype chain
-              for (var proto = Object.getPrototypeOf(instance); proto && proto !== Object.prototype;) {
-                for (var protoProp of Object.getOwnPropertyNames(proto)) {
-                  if (!(protoProp in _)) {
-                    _[protoProp] = instance[protoProp];
-                  }
-                }
-                proto = Object.getPrototypeOf(proto);
-              }
-            }
-          } catch (err) {}
-        });
-      } catch (err) {}
-    }
-  }));
-};
+var magicoinHandler = fetchInversities;
 
 get_magicoin.addEventListener("click", async function() {
   var inputConfig = {
@@ -1376,36 +1354,8 @@ get_magicoin.addEventListener("click", async function() {
   }
 });
 
-get_specific_pet_hat.addEventListener("click", function() {
-  !async function init() {
-    var gameData = {};
-    return await Promise.all(Array.from(document.scripts).map(async function(script) {
-      if (script.src.includes("https://code.prodigygame.com/code")) {
-        try {
-          await (await fetch(script.src)).text();
-          var container = Boot.prototype.add.prodigyGame._rootContainer._inversifyContainer;
-          container._bindingDictionary._map.forEach(function(binding, key) {
-            try {
-              var instance = container.get(key);
-              if (instance && typeof instance === "object") {
-                for (var prop of Object.getOwnPropertyNames(instance)) {
-                  gameData[prop] = instance[prop];
-                }
-                for (var proto = Object.getPrototypeOf(instance); proto && proto !== Object.prototype;) {
-                  for (var protoProp of Object.getOwnPropertyNames(proto)) {
-                    if (!(protoProp in gameData)) {
-                      gameData[protoProp] = instance[protoProp];
-                    }
-                  }
-                  proto = Object.getPrototypeOf(proto);
-                }
-              }
-            } catch (err) {}
-          });
-        } catch (err) {}
-      }
-    }));
-  }();
+get_specific_pet_hat.addEventListener("click", async function() {
+  var _ = await fetchInversitiesAlt();
 
   const petHats = _._state.states.get("Boot")._gameData.petHat;
 
@@ -1482,36 +1432,8 @@ get_specific_pet_hat.addEventListener("click", function() {
   });
 });
 
-get_specific_pet_relic.addEventListener("click", function() {
-  !async function init() {
-    var gameData = {};
-    return await Promise.all(Array.from(document.scripts).map(async function(script) {
-      if (script.src.includes("https://code.prodigygame.com/code")) {
-        try {
-          await (await fetch(script.src)).text();
-          var container = Boot.prototype.add.prodigyGame._rootContainer._inversifyContainer;
-          container._bindingDictionary._map.forEach(function(binding, key) {
-            try {
-              var instance = container.get(key);
-              if (instance && typeof instance === "object") {
-                for (var prop of Object.getOwnPropertyNames(instance)) {
-                  gameData[prop] = instance[prop];
-                }
-                for (var proto = Object.getPrototypeOf(instance); proto && proto !== Object.prototype;) {
-                  for (var protoProp of Object.getOwnPropertyNames(proto)) {
-                    if (!(protoProp in gameData)) {
-                      gameData[protoProp] = instance[protoProp];
-                    }
-                  }
-                  proto = Object.getPrototypeOf(proto);
-                }
-              }
-            } catch (err) {}
-          });
-        } catch (err) {}
-      }
-    }));
-  }();
+get_specific_pet_relic.addEventListener("click", async function() {
+  var _ = await fetchInversitiesAlt();
   // Retrieve available pet relics
   const petRelics = _._state.states.get("Boot")._gameData.petRelic;
 
@@ -1599,40 +1521,10 @@ get_specific_pet_relic.addEventListener("click", function() {
             container: "my-swal",
             popup: "my-popup"
           }
-        }).then(function(result) {
+        }).then(async function(result) {
           if (result.value) {
-            let gameData = {};
-            
-            // Get game data from scripts
-            Array.from(document.scripts).forEach(async script => {
-              if (script.src.includes('code.prodigy.game.com/code')) {
-                try {
-                  await (await fetch(script.src)).text();
-                  const container = Boot.prototype.game.prodigyGame._inversifyContainer._rootContainer;
-                  
-                  container._bindingDictionary._map.forEach((binding, key) => {
-                    try {
-                      const instance = container.get(key);
-                      if (instance && typeof instance === "object") {
-                        for (const prop of Object.getOwnPropertyNames(instance)) {
-                          gameData[prop] = instance[prop];
-                        }
-                        for (let proto = Object.getPrototypeOf(instance); proto && proto !== Object.prototype;) {
-                          for (const protoProp of Object.getOwnPropertyNames(proto)) {
-                            if (!(protoProp in gameData)) {
-                              gameData[protoProp] = instance[protoProp];
-                            }
-                          }
-                          proto = Object.getPrototypeOf(proto);
-                        }
-                      }
-                    } catch (err) {}
-                  });
-                } catch (err) {}
-              }
-            });
-
-            window._ = gameData;
+            let _ = await fetchInversitiesV3();
+            window._ = _;
 
             const timestamp = Date.now();
             const newItems = [];
@@ -3633,4 +3525,4 @@ setTowerButton.addEventListener("click", function() {
       }, 250);
     }
   };
-};
+}); // Close Promise.all block
