@@ -1,53 +1,52 @@
-import { useNavigate } from '@solidjs/router'
-import { Search } from 'lucide-solid'
-import { createSignal, createEffect } from 'solid-js'
-import Prism from '../components/hyperspeed'
+import { useNavigate } from "@solidjs/router";
+import { Search } from "lucide-solid";
+import { createSignal, createEffect } from "solid-js";
+import Prism from "../components/hyperspeed";
 
 export default function Home() {
-  const [query, setQuery] = createSignal('')
-  const [clicks, setClicks] = createSignal(0)
-  const [showPassword, setShowPassword] = createSignal(false)
-  const [showProxy, setShowProxy] = createSignal(false)
-  const [password, setPassword] = createSignal('')
-  const [currentMessageIndex, setCurrentMessageIndex] = createSignal(0)
+  const [query, setQuery] = createSignal("");
+  const [clicks, setClicks] = createSignal(0);
+  const [showPassword, setShowPassword] = createSignal(false);
+  const [showProxy, setShowProxy] = createSignal(false);
+  const [password, setPassword] = createSignal("");
+  const [currentMessageIndex, setCurrentMessageIndex] = createSignal(0);
   const messages = [
-    "Check out Crazygames",
-    "Customize in Settings",
-    "Play Minecraft Now",
-    "Browse Securely",
-    "Privacy matters",
-  ]
-  const navigate = useNavigate()
+    "67",
+    "It might be laggy (do I care no)",
+    "If you dont like it dont use it",
+    "Whats the password?",
+  ];
+  const navigate = useNavigate();
 
   createEffect(() => {
     const timer = setInterval(() => {
-      setCurrentMessageIndex((currentMessageIndex() + 1) % messages.length)
-    }, 2000)
-    return () => clearInterval(timer)
-  })
+      setCurrentMessageIndex((currentMessageIndex() + 1) % messages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  });
 
   function processInput() {
-    if (!query()) return
-    navigate(`/route/${btoa(query())}`)
+    if (!query()) return;
+    navigate(`/route/${btoa(query())}`);
   }
 
   function handleClick() {
-    setClicks(clicks() + 1)
+    setClicks(clicks() + 1);
     if (clicks() === 8) {
-      setShowPassword(true)
+      setShowPassword(true);
     }
   }
 
   function checkPassword() {
-    if (password() === 'pizza') {
-      setShowProxy(true)
-      setShowPassword(false)
+    if (password() === "pizza") {
+      setShowProxy(true);
+      setShowPassword(false);
     }
   }
 
   return (
     <div onClick={handleClick}>
-      <Prism 
+      <Prism
         animationType="3drotate"
         glow={0.7}
         noise={0.05}
@@ -60,7 +59,11 @@ export default function Home() {
       {!showPassword() && !showProxy() && (
         <div class="absolute left-1/2 top-1/2 flex w-screen -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4">
           <div class="flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-12 w-12">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              class="h-12 w-12"
+            >
               <title>Hot-Chocolate icon</title>
               <path
                 fill="currentColor"
@@ -84,7 +87,9 @@ export default function Home() {
             placeholder="Enter password"
             class="input w-64 bg-base-300"
           />
-          <button class="btn" onClick={checkPassword}>Submit</button>
+          <button class="btn" onClick={checkPassword}>
+            Submit
+          </button>
         </div>
       )}
       {showProxy() && (
@@ -92,8 +97,8 @@ export default function Home() {
           <div class="join w-1/3">
             <input
               onKeyPress={(e) => {
-                if (e.key !== 'Enter') return
-                processInput()
+                if (e.key !== "Enter") return;
+                processInput();
               }}
               value={query()}
               onInput={(e) => setQuery(e.target.value)}
@@ -101,12 +106,16 @@ export default function Home() {
               type="text"
               class="input join-item w-full bg-base-300"
             />
-            <button class="btn btn-square join-item bg-base-300 border-none" type="button" onClick={processInput}>
+            <button
+              class="btn btn-square join-item bg-base-300 border-none"
+              type="button"
+              onClick={processInput}
+            >
               <Search class="h-5 w-5" />
             </button>
           </div>
         </div>
       )}
     </div>
-  )
+  );
 }
