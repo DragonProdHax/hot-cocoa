@@ -34,7 +34,7 @@ export default function Navbar() {
           </A>
           <A href="/proxy">
             <button class="btn btn-ghost h-10 min-h-10" type="button">
-              <Globe class="h-5 w-5" /> Proxy
+              <Globe class="h-5 w-5" /> Pr0xy
             </button>
           </A>
           <A href="/games">

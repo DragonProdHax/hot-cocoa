@@ -2,7 +2,6 @@ import { useNavigate } from '@solidjs/router'
 import { createSignal, onMount } from 'solid-js'
 import { Search, Plus, Zap } from 'lucide-solid'
 import SplitText from '../components/SplitText'
-import Galaxy from '../components/Galaxy'
 import { groqSuggestions } from '../lib/groq-suggestions'
 
 interface Shortcut {
@@ -303,20 +302,7 @@ export default function Proxy() {
   const shouldShowMaintenance = () => maintenance() && !isAdmin()
 
   return (
-    <div class="min-h-screen relative">
-      {/* Galaxy Background - Full Screen */}
-      <div class="fixed inset-0 -z-10">
-        <Galaxy 
-          mouseRepulsion={true}
-          mouseInteraction={true}
-          density={1.2}
-          glowIntensity={0.2}
-          saturation={1.2}
-          hueShift={180}
-          transparent={false}
-        />
-      </div>
-
+    <div class="min-h-screen relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Maintenance Screen */}
       {shouldShowMaintenance() && (
         <div class="fixed inset-0 z-50 flex flex-col items-center justify-center p-8 bg-black/50 backdrop-blur-sm">

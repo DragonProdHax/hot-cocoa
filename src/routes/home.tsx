@@ -1,7 +1,6 @@
 import { useNavigate } from "@solidjs/router";
 import { Search } from "lucide-solid";
 import { createSignal, createEffect } from "solid-js";
-import Prism from "../components/hyperspeed";
 
 export default function Home() {
   const [query, setQuery] = createSignal("");
@@ -45,17 +44,7 @@ export default function Home() {
   }
 
   return (
-    <div onClick={handleClick}>
-      <Prism
-        animationType="3drotate"
-        glow={0.7}
-        noise={0.05}
-        timeScale={0.2}
-        colorFrequency={0.8}
-        bloom={0.8}
-        hueShift={0.2}
-        scale={2.8}
-      />
+    <div class="min-h-screen bg-gradient-to-br from-amber-900 via-orange-800 to-amber-950" onClick={handleClick}>
       {!showPassword() && !showProxy() && (
         <div class="absolute left-1/2 top-1/2 flex w-screen -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4">
           <div class="flex items-center gap-3">
