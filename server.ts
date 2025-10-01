@@ -31,6 +31,14 @@ hyperbeamProcess.on('error', (err) => {
 
 app.use(express.static('dist'))
 
+// Proxy hyperbeam API requests to the hyperbeam server
+app.use('/api', (req, res) => {
+  proxy.web(req, res, {
+    target: 'http://localhost:3001',
+    changeOrigin: true
+  })
+})
+
 app.use('/cdn', (req, res) => {
   proxy.web(req, res, {
     target: 'https://assets.3kh0.net',

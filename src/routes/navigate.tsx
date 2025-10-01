@@ -19,7 +19,7 @@ export default function Navigate() {
       const targetUrl = atob(params.url)
       
       // Create Hyperbeam session
-      const response = await fetch('http://localhost:3001/api/session/create', {
+      const response = await fetch('/api/session/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
