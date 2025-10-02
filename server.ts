@@ -110,9 +110,10 @@ let requestCount = 0
 
 const PROXY_LIST = [
   null, // Direct connection
-  null, // Will implement with actual proxies when available
-  null,
-  null
+  // Add free proxy services (replace with real proxies for production)
+  'http://proxy-server-1:8080', // Placeholder - replace with real proxy
+  'http://proxy-server-2:8080', // Placeholder - replace with real proxy
+  'http://proxy-server-3:8080'  // Placeholder - replace with real proxy
 ]
 
 const USER_AGENTS = [
@@ -146,36 +147,60 @@ async function writeIPRotationData(data: any) {
   }
 }
 
+// Add request delay to avoid rate limiting
+async function delay(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 async function createAxiosInstance() {
   const rotationData = await readIPRotationData()
   
-  // Rotate IP every 4 requests
-  if (rotationData.requestCount >= 4) {
+  // Rotate IP every 2 requests (more aggressive rotation)
+  if (rotationData.requestCount >= 2) {
     rotationData.currentProxyIndex = (rotationData.currentProxyIndex + 1) % PROXY_LIST.length
     rotationData.requestCount = 0
     rotationData.lastRotation = Date.now()
     await writeIPRotationData(rotationData)
+    
+    // Add delay between rotations to avoid rapid requests
+    await delay(2000) // 2 second delay
   }
   
   rotationData.requestCount++
   await writeIPRotationData(rotationData)
+  
+  // Add random delay between requests (1-3 seconds)
+  const randomDelay = Math.floor(Math.random() * 2000) + 1000
+  await delay(randomDelay)
   
   const config: any = {
     headers: {
       'Authorization': `Bearer ${HYPERBEAM_API_KEY}`,
       'Content-Type': 'application/json',
       'User-Agent': USER_AGENTS[rotationData.currentProxyIndex],
-      'Accept-Language': ACCEPT_LANGUAGES[rotationData.currentProxyIndex]
-    }
+      'Accept-Language': ACCEPT_LANGUAGES[rotationData.currentProxyIndex],
+      'X-Forwarded-For': generateRandomIP(), // Simulate different source IPs
+      'X-Real-IP': generateRandomIP()
+    },
+    timeout: 30000 // 30 second timeout
   }
   
   const proxy = PROXY_LIST[rotationData.currentProxyIndex]
-  if (proxy) {
-    const { HttpsProxyAgent } = await import('https-proxy-agent')
-    config.httpsAgent = new HttpsProxyAgent(proxy)
+  if (proxy && proxy !== 'null') {
+    try {
+      const { HttpsProxyAgent } = await import('https-proxy-agent')
+      config.httpsAgent = new HttpsProxyAgent(proxy)
+    } catch (error) {
+      console.warn(`Failed to use proxy ${proxy}, falling back to direct connection`)
+    }
   }
   
   return axios.create(config)
+}
+
+// Generate random IP for headers
+function generateRandomIP() {
+  return `${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`
 }
 
 // Initialize files
@@ -200,8 +225,31 @@ app.post('/api/session/create', async (req, res) => {
       })
     }
 
-    const axiosInstance = await createAxiosInstance()
-    const response = await axiosInstance.post('https://engine.hyperbeam.com/v0/vm', {})
+    // Retry logic with exponential backoff for rate limiting
+    let response
+    let attempts = 0
+    const maxAttempts = 3
+    
+    while (attempts < maxAttempts) {
+      try {
+        const axiosInstance = await createAxiosInstance()
+        response = await axiosInstance.post('https://engine.hyperbeam.com/v0/vm', {})
+        break // Success, exit retry loop
+      } catch (error: any) {
+        attempts++
+        
+        if (error.response?.data?.code === 'err_too_many_vm_requests' && attempts < maxAttempts) {
+          // Exponential backoff: wait 5s, then 10s, then 20s
+          const waitTime = 5000 * Math.pow(2, attempts - 1)
+          console.log(`Rate limited, waiting ${waitTime/1000}s before retry ${attempts}/${maxAttempts}`)
+          await delay(waitTime)
+          continue
+        }
+        
+        // If not rate limit error or max attempts reached, throw the error
+        throw error
+      }
+    }
 
     const sessionData = {
       sessionId: response.data.session_id,
