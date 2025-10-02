@@ -110,10 +110,9 @@ let requestCount = 0
 
 const PROXY_LIST = [
   null, // Direct connection
-  // Add free proxy services (replace with real proxies for production)
-  'http://proxy-server-1:8080', // Placeholder - replace with real proxy
-  'http://proxy-server-2:8080', // Placeholder - replace with real proxy
-  'http://proxy-server-3:8080'  // Placeholder - replace with real proxy
+  null, // Direct connection with different headers
+  null, // Direct connection with different headers
+  null  // Direct connection with different headers
 ]
 
 const USER_AGENTS = [
@@ -185,15 +184,8 @@ async function createAxiosInstance() {
     timeout: 30000 // 30 second timeout
   }
   
-  const proxy = PROXY_LIST[rotationData.currentProxyIndex]
-  if (proxy && proxy !== 'null') {
-    try {
-      const { HttpsProxyAgent } = await import('https-proxy-agent')
-      config.httpsAgent = new HttpsProxyAgent(proxy)
-    } catch (error) {
-      console.warn(`Failed to use proxy ${proxy}, falling back to direct connection`)
-    }
-  }
+  // Skip proxy configuration since we're using direct connections only
+  // This prevents DNS errors from non-existent proxy servers
   
   return axios.create(config)
 }
