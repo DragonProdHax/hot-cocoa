@@ -20,7 +20,7 @@ export default function Sessions() {
   async function fetchSessions() {
     try {
       setLoading(true)
-      const response = await fetch('http://localhost:3001/api/sessions')
+      const response = await fetch('/api/sessions')
       const data = await response.json()
 
       if (data.success) {
@@ -39,7 +39,7 @@ export default function Sessions() {
 
   async function deleteSession(sessionId: string) {
     try {
-      const response = await fetch(`http://localhost:3001/api/session/${sessionId}`, {
+      const response = await fetch(`/api/session/${sessionId}`, {
         method: 'DELETE',
       })
       const data = await response.json()
