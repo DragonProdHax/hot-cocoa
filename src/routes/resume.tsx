@@ -17,7 +17,7 @@ export default function Resume() {
       const sessionId = params.sessionId
       
       // Fetch session details
-      const response = await fetch(`http://localhost:3001/api/session/${sessionId}`)
+      const response = await fetch(`/api/session/${sessionId}`)
       const data = await response.json()
 
       if (data.success) {
