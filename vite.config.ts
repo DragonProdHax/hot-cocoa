@@ -52,6 +52,11 @@ export default defineConfig({
         target: 'https://assets.3kh0.net',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/cdn/, '')
+      },
+      // Proxy API requests to the server.ts instance
+      '/api': {
+        target: 'http://localhost:3003',
+        changeOrigin: true
       }
     }
   },
